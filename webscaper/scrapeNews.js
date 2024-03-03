@@ -49,7 +49,7 @@ export async function scrapeArticles() {
       articles: await Promise.all(
         Object.values(articles).map(async (article) => {
           const data = await scrapeArticle(article.href);
-          return { ...article, article: data };
+          return { ...article, ...data };
         })
       ),
     };
