@@ -67,8 +67,12 @@ async function scrapeArticle(href) {
   const $ = load(res.data);
   const body = $(".anvil-article__body p");
   const articleImg = $(".anvil-images__image-container > picture > img")[0];
-  const author = $("#analytics-config");
-  console.log(author.html());
+  const metadata = JSON.parse($("#analytics-config").html())["page_payload"][
+    "page_meta"
+  ];
+  article.author = metadata.author;
+  article.publisher = metadata.page_publication;
+  article.publishedDate = metadata.page_created_at;
   article.img.src = articleImg.attribs.src;
   body.each((index, element) => {
     const text = $(element).text().replace(/\s+/g, " ").trim();
