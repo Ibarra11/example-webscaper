@@ -17,7 +17,7 @@ import { load } from "cheerio";
 const SELECTOR =
   'a[href^="https://www.turlockjournal.com/news/local/"]:not([href="https://www.turlockjournal.com/news/local/"])';
 
-export async function scrapeNews() {
+export async function scrapeArticles() {
   try {
     const response = await axios.get(
       "https://www.turlockjournal.com/news/local"
@@ -28,11 +28,11 @@ export async function scrapeNews() {
       const $ = load(element);
       const href = element.attribs.href;
       if (!(href in articles)) {
-        const img = { src: "", alt: "" };
+        const thumbnail = { src: "", alt: "" };
         const { src, alt } = $("img")[0].attribs;
-        img.src = src;
-        img.alt = alt;
-        articles[href] = { img };
+        thumbnail.src = src;
+        thumbnail.alt = alt;
+        articles[href] = { thumbnail };
       }
     });
     $(`${SELECTOR}:not(:has(img))`).each((index, element) => {
@@ -44,8 +44,30 @@ export async function scrapeNews() {
         article.href = href;
       }
     });
-    return Object.values(articles);
+
+    return {
+      articles: await Promise.all(
+        Object.values(articles).map(async (article) => {
+          const data = await scrapeArticle(article.href);
+          return { ...article, article: data };
+        })
+      ),
+    };
   } catch (e) {
     console.error(e);
   }
+}
+
+async function scrapeArticle(href) {
+  const article = { img: { src: "" }, content: [] };
+  const res = await axios.get(href);
+  const $ = load(res.data);
+  const body = $(".anvil-article__body p");
+  const articleImg = $(".anvil-images__image-container > picture > img")[0];
+  article.img.src = articleImg.attribs.src;
+  body.each((index, element) => {
+    const text = $(element).text().replace(/\s+/g, " ").trim();
+    article.content.push(text);
+  });
+  return article;
 }

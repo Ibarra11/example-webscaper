@@ -6,7 +6,12 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
     "start": "nodemon"
+=======
+    "start": "nodemon",
+    "scrape": "node ./script.js"
+>>>>>>> dev
   },
   "keywords": [],
   "author": "",
