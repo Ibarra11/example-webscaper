@@ -7,6 +7,7 @@
       },
       "headline": "Library offers craft projects, book club, teen poetry workshop in March",
       "href": "https://www.turlockjournal.com/news/local/library-offers-craft-projects-book-club-teen-poetry-workshop-march/",
+      "id": "library-offers-craft-projects-book-club-teen-poetry-workshop-march",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/03/02/images/library_events.max-1200x675.jpg"
       },
@@ -36,6 +37,7 @@
       },
       "headline": "Author of ‘The Flight Attendant’ coming to Turlock",
       "href": "https://www.turlockjournal.com/news/local/author-of-the-flight-attendant-coming-to-turlock/",
+      "id": "author-of-the-flight-attendant-coming-to-turlock",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/03/02/images/Library_presents.max-1200x675.jpg"
       },
@@ -63,6 +65,7 @@
       },
       "headline": "Don’t stop until the whistle blows",
       "href": "https://www.turlockjournal.com/news/local/dont-stop-until-the-whistle-blows/",
+      "id": "dont-stop-until-the-whistle-blows",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/28/images/Williams_family.max-1200x675.jpg"
       },
@@ -103,6 +106,7 @@
       },
       "headline": "Meet 2024’s Divas",
       "href": "https://www.turlockjournal.com/news/local/meet-2024s-divas/",
+      "id": "meet-2024s-divas",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/28/images/Diva_Honorees_2024.max-1200x675.jpg"
       },
@@ -128,6 +132,7 @@
       },
       "headline": "More Mister Car Wash",
       "href": "https://www.turlockjournal.com/news/local/more-mister-car-wash/",
+      "id": "more-mister-car-wash",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/28/images/Mister-Car-Wash.max-1200x675.jpg"
       },
@@ -145,6 +150,7 @@
       },
       "headline": "Famed ‘Hulk’ actor Lou Ferrigno coming to Turlock",
       "href": "https://www.turlockjournal.com/news/local/famed-hulk-actor-lou-ferrigno-coming-to-turlock/",
+      "id": "famed-hulk-actor-lou-ferrigno-coming-to-turlock",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/24/images/Hulk_comes_to_Turlock_1.max-1200x675.jpg"
       },
@@ -167,6 +173,7 @@
       },
       "headline": "Google Developer Group established in Turlock",
       "href": "https://www.turlockjournal.com/news/local/google-developer-group-established-turlock/",
+      "id": "google-developer-group-established-turlock",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/24/images/google_developer_group2.max-1200x675.jpg"
       },
@@ -190,6 +197,7 @@
       },
       "headline": "New Legacy Health nursing scholarship program offers free tuition for local BSN students",
       "href": "https://www.turlockjournal.com/news/local/new-legacy-health-nursing-scholarship-program-offers-free-tuition-local-bsn-students/",
+      "id": "new-legacy-health-nursing-scholarship-program-offers-free-tuition-local-bsn-students",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/24/images/Legacy_Nursing.max-1200x675.jpg"
       },
@@ -216,6 +224,7 @@
       },
       "headline": "Making a World of Difference",
       "href": "https://www.turlockjournal.com/news/local/making-world-difference/",
+      "id": "making-world-difference",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/21/images/Amazon_Warriors.max-1200x675.png"
       },
@@ -242,6 +251,7 @@
       },
       "headline": "New cherry packing facility now hiring",
       "href": "https://www.turlockjournal.com/news/local/new-cherry-packing-facility-now-hiring/",
+      "id": "new-cherry-packing-facility-now-hiring",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/21/images/cherry_facility_hiring.max-1200x675.jpg"
       },
@@ -266,6 +276,7 @@
       },
       "headline": "A PRODIGAL DONATION",
       "href": "https://www.turlockjournal.com/news/local/prodigal-donation/",
+      "id": "prodigal-donation",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/21/images/Prodigal_donation.max-1200x675.jpg"
       },
@@ -289,6 +300,7 @@
       },
       "headline": "Stanislaus in top 10 of ag producing counties in the U.S.",
       "href": "https://www.turlockjournal.com/news/local/stanislaus-top-10-ag-producing-counties-us/",
+      "id": "stanislaus-top-10-ag-producing-counties-us",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/17/images/ag_census_2.max-1200x675.jpg"
       },
@@ -323,6 +335,7 @@
       },
       "headline": "Shaneyfelt's Homecoming",
       "href": "https://www.turlockjournal.com/news/local/shaneyfelts-homecoming/",
+      "id": "shaneyfelts-homecoming",
       "img": {
         "src": "https://centralca.cdn-anvilcms.net/media/images/2024/02/14/images/Shaneyfelt_homecoming_3.max-1200x675.jpg"
       },

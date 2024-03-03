@@ -42,6 +42,9 @@ export async function scrapeArticles() {
       if (article && !("headline" in article)) {
         article.headline = $("div").text().trim();
         article.href = href;
+        const pathParts = href.split("/");
+        const indexOfLocal = pathParts.indexOf("local");
+        article.id = pathParts[indexOfLocal + 1];
       }
     });
 
@@ -64,6 +67,8 @@ async function scrapeArticle(href) {
   const $ = load(res.data);
   const body = $(".anvil-article__body p");
   const articleImg = $(".anvil-images__image-container > picture > img")[0];
+  const author = $("#analytics-config");
+  console.log(author.html());
   article.img.src = articleImg.attribs.src;
   body.each((index, element) => {
     const text = $(element).text().replace(/\s+/g, " ").trim();

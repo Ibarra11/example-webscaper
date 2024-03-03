@@ -13,6 +13,23 @@ app.get("/api/news/turlockjournal", async (req, res) => {
   }
 });
 
+app.get("/api/news/turlockjournal/:article", async (req, res) => {
+  try {
+    const { articles } = JSON.parse(
+      await readFile(path.join(process.cwd(), "articles.json"))
+    );
+    const article = articles.find(
+      (article) => article.id === req.params.article
+    );
+    if (!article) {
+      return res.sendStatus(404);
+    }
+    return res.json({ article });
+  } catch (e) {
+    return res.sendStatus(500);
+  }
+});
+
 app.listen(port, () => {
   console.log(`app listening at http://localhost:${port}`);
 });
