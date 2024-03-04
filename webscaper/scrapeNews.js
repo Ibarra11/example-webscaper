@@ -1,5 +1,5 @@
 import axios from "axios";
-import { writeFile } from "fs/promises";
+import { readFile, writeFile } from "fs/promises";
 import { load } from "cheerio";
 import path from "path";
 
@@ -17,7 +17,7 @@ import path from "path";
 //     </div>
 
 const SELECTOR =
-  'a[href^="https://www.turlockjournal.com/news/local/"]:not([href="https://www.turlockjournal.com/news/local/"])';
+  'div:has(>a[href^="https://www.turlockjournal.com/news/local/"]:not([href="https://www.turlockjournal.com/news/local/"]))';
 
 export async function scrapeArticles() {
   try {
@@ -26,34 +26,24 @@ export async function scrapeArticles() {
     );
     await writeFile(path.join(process.cwd(), "articles.html"), response.data);
     const $ = load(response.data);
-    const articles = {};
-    $(`${SELECTOR}:has(img)`).each((index, element) => {
+    const articles = [];
+    $(SELECTOR).each((index, element) => {
+      const article = {};
       const $ = load(element);
-      const href = element.attribs.href;
-      if (!(href in articles)) {
-        const thumbnail = { src: "", alt: "" };
-        const { src, alt } = $("img")[0].attribs;
-        thumbnail.src = src;
-        thumbnail.alt = alt;
-        articles[href] = { thumbnail };
-      }
+      const { src, alt } = $("img")[0].attribs;
+      const headline = $("a:not(:has(img)) > div").text().trim();
+      article.thumbnail = { src, alt };
+      article.headline = headline;
+      article.href = $("a")[0].attribs.href;
+      const pathParts = article.href.split("/");
+      const indexOfLocal = pathParts.indexOf("local");
+      article.id = pathParts[indexOfLocal + 1];
+      articles.push(article);
     });
 
-    $(`${SELECTOR}:not(:has(img))`).each((index, element) => {
-      const $ = load(element);
-      const href = element.attribs.href;
-      const article = articles[href];
-      if (article && !("headline" in article)) {
-        article.headline = $("div").text().trim();
-        article.href = href;
-        const pathParts = href.split("/");
-        const indexOfLocal = pathParts.indexOf("local");
-        article.id = pathParts[indexOfLocal + 1];
-      }
-    });
     return {
       articles: await Promise.all(
-        Object.values(articles).map(async (article) => {
+        articles.map(async (article) => {
           const data = await scrapeArticle(article.href);
           return { ...article, ...data };
         })
