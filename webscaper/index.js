@@ -38,6 +38,6 @@ app.use((req, res, next) => {
   return res.status(404).send("invalid path");
 });
 
-app.listen(port, () => {
+app.listen(port, "0.0.0.0", () => {
   console.log(`app listening at http://localhost:${port}`);
 });
