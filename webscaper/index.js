@@ -1,4 +1,5 @@
 import express from "express";
+
 import { readFile } from "fs/promises";
 import path from "path";
 import cors from "cors";
@@ -31,6 +32,10 @@ app.get("/api/news/turlockjournal/:article", async (req, res) => {
   } catch (e) {
     return res.sendStatus(500);
   }
+});
+
+app.use((req, res, next) => {
+  return res.status(404).send("invalid path");
 });
 
 app.listen(port, () => {
