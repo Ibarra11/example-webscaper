@@ -1,8 +1,11 @@
 import express from "express";
 import { readFile } from "fs/promises";
 import path from "path";
+import cors from "cors";
 const app = express();
 const port = process.env.port ?? 3000;
+
+app.use(cors());
 
 app.get("/api/news/turlockjournal", async (req, res) => {
   try {
