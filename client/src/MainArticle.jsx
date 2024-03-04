@@ -4,7 +4,7 @@ export default function MainArticle() {
   const article = useLoaderData();
   return (
     <div className="min-h-screen bg-gray-700 py-12 px-8">
-      <article className="max-w-2xl w-full mx-auto">
+      <article className="max-w-3xl w-full mx-auto">
         <a href="/" className="block text-gray-300 mb-4 text-sm">
           Go Back
         </a>
