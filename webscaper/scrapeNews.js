@@ -35,6 +35,7 @@ export async function scrapeArticles() {
         articles[href] = { thumbnail };
       }
     });
+
     $(`${SELECTOR}:not(:has(img))`).each((index, element) => {
       const $ = load(element);
       const href = element.attribs.href;
@@ -74,6 +75,7 @@ async function scrapeArticle(href) {
   article.publisher = metadata.page_publication;
   article.publishedDate = metadata.page_created_at;
   article.img.src = articleImg.attribs.src;
+
   body.each((index, element) => {
     const text = $(element).text().replace(/\s+/g, " ").trim();
     article.content.push(text);

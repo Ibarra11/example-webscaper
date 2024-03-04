@@ -7,7 +7,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon",
-    "scrape": "node ./script.js"
+    "webscraper": "node ./script.js"
   },
   "keywords": [],
   "author": "",
