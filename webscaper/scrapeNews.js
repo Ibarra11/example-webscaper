@@ -1,5 +1,7 @@
 import axios from "axios";
+import { writeFile } from "fs/promises";
 import { load } from "cheerio";
+import path from "path";
 
 // Example Format of a article from Turlock Journal
 //     <div class="anvil-content-box--style--4 anvil-content-box">
@@ -22,8 +24,15 @@ export async function scrapeArticles() {
     const response = await axios.get(
       "https://www.turlockjournal.com/news/local"
     );
+    await writeFile(path.join(process.cwd(), "articles.html"), response.data);
     const $ = load(response.data);
     const articles = {};
+    console.log("--------------");
+    console.log(
+      Array.from($(`${SELECTOR}:has(img)`)).map((link) => link.attribs.href)
+    );
+    console.log("--------------");
+
     $(`${SELECTOR}:has(img)`).each((index, element) => {
       const $ = load(element);
       const href = element.attribs.href;
@@ -35,7 +44,9 @@ export async function scrapeArticles() {
         articles[href] = { thumbnail };
       }
     });
-
+    console.log("--------------");
+    console.log(articles);
+    console.log("--------------");
     $(`${SELECTOR}:not(:has(img))`).each((index, element) => {
       const $ = load(element);
       const href = element.attribs.href;
@@ -48,7 +59,9 @@ export async function scrapeArticles() {
         article.id = pathParts[indexOfLocal + 1];
       }
     });
-
+    console.log("--------------");
+    console.log(articles);
+    console.log("--------------");
     return {
       articles: await Promise.all(
         Object.values(articles).map(async (article) => {

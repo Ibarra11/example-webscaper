@@ -10,7 +10,9 @@ app.use(cors());
 
 app.get("/api/news/turlockjournal", async (req, res) => {
   try {
-    const articles = await readFile(path.join(process.cwd(), "articles.json"));
+    const articles = JSON.parse(
+      await readFile(path.join(process.cwd(), "articles.json"))
+    );
     return res.send(articles);
   } catch (e) {
     return res.sendStatus(500);
